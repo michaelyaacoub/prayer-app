@@ -6,23 +6,25 @@ const CATEGORIES = [
 const initialFacts = [
   {
     id: 1,
-    text: "Pray for my roommate, he has a stage 4 cancer. His name is Craig",
+    name: "Trevor",
+    text: "Pray for my roommate, he has a stage 4 cancer. His name is Craig, he is one of the assistant pastors at our church as well.",
     source: "https://www.bible.com/",
     category: "prayer",
+    votesWillDo: 24,
     votesPraying: 24,
     votesHug: 9,
-    //votesFalse: 4,
-    createdIn: 2021,
+    createdIn: 2022,
   },
   {
     id: 2,
+    name: "Michael",
     text: "Priase report - my classmate came to know the Lord last Sunday.",
     source: "https://www.bible.com/",
     category: "praise",
-    votesPraying: 11,
-    votesHug: 2,
-    //votesFalse: 0,
-    createdIn: 2019,
+    votesWillDo: 12,
+    votesPraying: 23,
+    votesHug: 4,
+    createdIn: 2023,
   }
 ];
 
