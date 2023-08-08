@@ -34,9 +34,9 @@ body {
 }
 
 @media (max-width: 900px) {
-  .main {
-    grid-template-columns: 1fr;
-  }
+    .main {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ELEMENTS */
@@ -86,6 +86,12 @@ h2 {
     gap: 24px;
 }
 
+.user {
+    font-size: 20px;
+    background-color: #876226;
+
+}
+
 .tag {
     text-transform: uppercase;
     font-size: 14px;
@@ -96,9 +102,54 @@ h2 {
     border-radius: 100px;
 }
 
+.btn {
+    color: inherit;
+    border: none;
+    background-color: #5dd61c;
+    font-size: 15px;
+    line-height: 1;
+    text-transform: uppercase;
+    /* top/right - bottom - left */
+    padding: 16px 0 13px;
+    font-family: "Sono" sans-serif;
+
+    background-color: #010208;
+    transition: 0.3s;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-large {
+    font-size: 20px;
+    padding: 20px 30px 15px;
+}
+
+.categories-btns {
+    width: 100%;
+    background-color: none;
+    margin-bottom: 10px;
+}
+
 .vote-buttons {
     /* This will always set elements to the left */
     margin-left: auto;
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.vote-buttons button {
+    border: none;
+    background-color: #4e4b49;
+    padding: 6px 12px;
+    border-radius: 100px;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.vote-buttons button:hover {
+    background-color: #151615;
 }
 
 ul {
