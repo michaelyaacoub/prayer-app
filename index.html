@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer App</title>
+    <link rel="icon" type="prayer-icon" style="border-radius: 50%;" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Sono:wght@400;600;700&display=swap"
@@ -17,60 +18,64 @@
         <header class="header">
             <div class="logo">
                 <img src="logo.png" alt="this is share a prayer app logo!" />
-                <h1>Prayer & Praise App</h1>
+                <h1>Prayer Request</h1>
             </div>
             <!-- <h2>I have a prayper Request</h2>
         <h2>I have a praise report</h2> -->
-            <button>Share A Prayer</button>
+            <button class="btn btn-large">Share A Prayer</button>
         </header>
         <section>
             <form class="fill-form">
-                <input type="text" name="praise_report" id="" placeholder="Share your name with us: ">
-                <input type="text" name="prayer_request" id=""
-                    placeholder="Share a prayer request..." /><span>200</span>
-                <input type="text" name="asking_questions" id="" placeholder="Ask a question...?">
+                <label for="user_name">Put your name:</label>
+                <input type="text" name="user_name" id="" placeholder="First name: ">
+                <label for="user_name">Prayer Request:</label>
+                <input type="text" name="prayer_request" id="" class="prayer-input"
+                    placeholder="Share a prayer request... " />
                 <select name="selection" id="">
-                    <option value="">Choose Prayer/Praise Catagory</option>
+                    <option value="">Choose prayer catagory</option>
                     <option value="prayer_request">Prayer request</option>
                     <option value="praise_report">Praise report</option>
                 </select>
+                <button class="btn btn-large">Post Prayer</button>
             </form>
         </section>
         <main class="main">
             <aside>
                 <ul>
-                    <li><button>All</button></li>
-                    <li><button>Cancer Free</button></li>
-                    <li><button>Spiritual Battles</button></li>
-                    <li><button>Marriage</button></li>
-                    <li><button>Healing</button></li>
+                    <li><button class="btn categories-btns">All</button></li>
+                    <li><button class="btn categories-btns">Cancer Free</button></li>
+                    <li><button class="btn categories-btns">Spiritual Battles</button></li>
+                    <li><button class="btn categories-btns">Marriage</button></li>
+                    <li><button class="btn categories-btns">Healing</button></li>
                 </ul>
             </aside>
             <section>
                 <ul>
                     <li>
                     <li class="box">
-                        <p>Pray for my roommate, he has a stage 4 cancer.
+                        <p>
+                            <span style="font-family: Sono;"><strong>From: Ramzy</strong></span><br>
+                            Pray for my roommate, he has a stage 4 cancer.
                             His name is Craig, he is one of the assistant pastors at our church as well.
                         </p>
-                        <a href="https://www.bible.com/" target="_blank">(Sourse)</a>
-                        <span class="tag" style="background-color: #3b82f6;">Cancer Free</span>
+                        <span class="tag" style="background-color: #060a0f;">Cancer Free</span>
                         <div class="vote-buttons">
-                            <button>👍 <strong>17</strong></button>
-                            <button>🙏 <strong>24</strong></button>
-                            <button>🤗 <strong>9</strong></button>
+                            <button>👍 17</button>
+                            <button>🙏 24</button>
+                            <button>🤗 9</button>
                         </div>
                     </li>
                     <li>
                     <li class="box">
-                        <p>Priase report - my classmate came to know the Lord last Sunday.
+                        <p>
+                            <span style="font-family: Sono;"><strong>From: Julian</strong></span><br>
+                            Priase report - my classmate came to know the Lord last Sunday.
                         </p>
-                        <a href="https://www.bible.com/" target="_blank">(Sourse)</a>
-                        <span class="tag" style="background-color: #eab308;">Priase Report</span>
+                        <span class="tag" style="background-color: #0c0a05;">Priase Report</span>
                         <div class="vote-buttons">
-                            <button>👍 <strong>12</strong></button>
-                            <button>🙏 <strong>23</strong></button>
-                            <button>🤗 <strong>4</strong></button>
+                            <button>👍 12</button>
+                            <button>🙏 23></button>
+                            <button>🤗 4</button>
                         </div>
                     </li>
                 </ul>
