@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #292524;
+    background-color: #1c1a1a;
     color: #fafaf9;
     font-family: "Sono", sans-serif;
     padding: 48px 64px;
@@ -42,7 +42,6 @@ body {
 /* ELEMENTS */
 
 .logo {
-    background-color: #262687;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -63,13 +62,6 @@ h1 {
 
 h2 {
     color: #fafaf9;
-}
-
-.fill-form {
-    background-color: #44403c;
-    padding: 16px 40px;
-    margin-bottom: 40px;
-    text-align: center;
 }
 
 .box {
@@ -93,9 +85,10 @@ h2 {
 }
 
 .tag {
+    flex-shrink: 0;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: "Coiny", sans-serif, Arial;
+    font-family: "Sono", sans-serif, Arial;
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
@@ -130,6 +123,11 @@ h2 {
     margin-bottom: 10px;
 }
 
+button:hover {
+    background-color: #0f0e10;
+    transition: 0.5s;
+}
+
 .vote-buttons {
     /* This will always set elements to the left */
     margin-left: auto;
@@ -149,9 +147,67 @@ h2 {
 }
 
 .vote-buttons button:hover {
-    background-color: #151615;
+    background-color: #0f0e10;
+    transition: 0.5s;
 }
 
 ul {
     list-style: none;
+}
+
+.fill-form {
+    border-radius: 20px;
+    background-color: #44403c;
+    padding: 16px 40px;
+    margin-bottom: 40px;
+    gap: 10px;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+}
+
+/* FORM */
+.fill-form input,
+select,
+option {
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-family: inherit;
+    border-radius: 5px;
+    color: #292524;
+}
+
+input[type=text]:focus {
+    border: 3px solid #292524;
+}
+
+input::placeholder {
+    color: #292524;
+}
+
+@media (max-width: 1000px) {
+    body {
+        padding: 32px 48px;
+    }
+
+    fill-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .fill-form input,
+    select,
+    option h1 {
+        width: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .box {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
 }
