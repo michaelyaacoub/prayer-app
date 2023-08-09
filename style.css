@@ -74,8 +74,19 @@ h2 {
     border-radius: 16px;
 
     display: flex;
-    align-items: center;
-    gap: 24px;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.post-details {
+    color: #aaaaaa;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-self: self-start;
 }
 
 .user {
@@ -89,11 +100,15 @@ h2 {
     text-transform: uppercase;
     font-size: 14px;
     font-family: "Sono", sans-serif, Arial;
+    background-color: #3f4d9a;
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 100px;
+    display: flex;
+    align-self: self-end;
 }
+
 
 .btn {
     color: inherit;
@@ -124,7 +139,7 @@ h2 {
 }
 
 button:hover {
-    background-color: #0f0e10;
+    background-color: #1f1d20;
     transition: 0.5s;
 }
 
@@ -155,6 +170,7 @@ ul {
     list-style: none;
 }
 
+/* FORM */
 .fill-form {
     border-radius: 20px;
     background-color: #44403c;
@@ -167,10 +183,10 @@ ul {
     grid-template-columns: 1fr;
 }
 
-/* FORM */
 .fill-form input,
 select,
-option {
+option,
+textarea {
     outline: none;
     border: none;
     padding: 10px;
@@ -185,6 +201,11 @@ input[type=text]:focus {
 
 input::placeholder {
     color: #292524;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 1000px) {
@@ -207,7 +228,7 @@ input::placeholder {
 @media (max-width: 1200px) {
     .box {
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
         gap: 10px;
     }
 }
