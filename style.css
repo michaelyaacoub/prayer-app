@@ -76,7 +76,7 @@ h2 {
 
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: self-start;
     gap: 5px;
 }
 
@@ -96,6 +96,13 @@ h2 {
 
 }
 
+.prayer-tags {
+    display: flex;
+    flex-direction: row;
+    align-self: self-end;
+    gap: 5px;
+}
+
 .tag {
     flex-shrink: 0;
     text-transform: uppercase;
@@ -106,8 +113,6 @@ h2 {
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 100px;
-    display: flex;
-    align-self: self-end;
 }
 
 
