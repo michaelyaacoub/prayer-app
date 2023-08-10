@@ -140,7 +140,7 @@ h2 {
 }
 
 button:hover {
-    background-color: #1f1d20;
+    background-color: #3f4d9a;
     transition: 0.5s;
 }
 
@@ -182,6 +182,10 @@ ul {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr;
+}
+
+.hide-form {
+    display: none !important;
 }
 
 .fill-form input,
