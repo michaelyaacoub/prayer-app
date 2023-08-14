@@ -109,7 +109,7 @@ h2 {
 }
 
 .hashtag {
-    padding-right: 5px ;
+    padding-right: 5px;
     color: #3f4d9a;
 
 }
@@ -242,6 +242,33 @@ input::placeholder {
 label {
     display: block;
     margin-bottom: 10px;
+}
+
+/* FOOTER */
+.pop-up {
+    display: flex;
+    align-items: start;
+    flex-shrink: 0;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: aliceblue;
+    color: #000;
+    border-radius: 5px;
+}
+
+.pop-up button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 @media (max-width: 1000px) {
