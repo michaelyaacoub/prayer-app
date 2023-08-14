@@ -16,3 +16,4 @@ activate_btn.addEventListener("click", function () {
         activate_btn.textContent = "Share A Prayer";
     }
 });
+

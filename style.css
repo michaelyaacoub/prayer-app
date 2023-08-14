@@ -104,6 +104,12 @@ h2 {
     gap: 5px;
 }
 
+.hashtag {
+
+    background-color: #081d97;
+
+}
+
 .tag {
     flex-shrink: 0;
     text-transform: uppercase;
