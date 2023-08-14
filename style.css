@@ -249,13 +249,14 @@ label {
     display: flex;
     align-items: start;
     flex-shrink: 0;
-    justify-content: space-between;
+    gap: 10px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 100px;
     padding: 20px;
     background-color: aliceblue;
     color: #000;
     border-radius: 5px;
+    transition: opacity 0.5s ease;
 }
 
 .pop-up button {
@@ -269,6 +270,10 @@ label {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.pop-up.fade-out {
+    opacity: 0;
 }
 
 @media (max-width: 1000px) {
