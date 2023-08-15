@@ -1,3 +1,5 @@
+// import { url, headers } from '.config.js';
+
 console.log('Hi mom');
 console.log("Hi dad");
 
@@ -67,8 +69,21 @@ msgBtn.addEventListener("click", () => {
     });
 });
 
+// load requests from db
+loadRequests();
+async function loadRequests() {
+    const res = await fetch("https://rfcmzmakvfqhhfjenvjk.supabase.co/rest/v1/prayer_request", {
+    headers:
+    {
 
-createPostRquestList(dataRequests);
+    }
+});
+
+const data = await res.json();
+console.log(data);
+
+createPostRquestList(data)
+};
 
 function createPostRquestList(dataArray) {
     const htmlContent = dataArray.map(
