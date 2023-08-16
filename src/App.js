@@ -1,6 +1,4 @@
-import { func } from "prop-types";
 import "./style.css"
-
 
 const dataRequests = [
   {
@@ -39,6 +37,8 @@ const dataRequests = [
 ];
 
 
+
+
 function App() {
   return (
     <>
@@ -73,16 +73,18 @@ function CategoryFilter() {
   return (<aside><ul>
     {/* list of buttons */}
     <li>
-      <button className="btn categories-btns">All</button>
-      <button className="btn categories-btns">Human Trafficing</button>
-      <button className="btn categories-btns">Cancer</button>
-      <button className="btn categories-btns">Healing</button>
-      <button className="btn categories-btns">Healing</button>
-      <button className="btn categories-btns">Peace</button>
-      <button className="btn categories-btns">Wisdom</button>
-      <button className="btn categories-btns">Courage</button>
-      <button className="btn categories-btns">Spiritual Life</button>
-      <button className="btn categories-btns">Marriage</button>
+      <div>
+        <button className="btn categories-btns">All</button>
+        <button className="btn categories-btns">Human Trafficing</button>
+        <button className="btn categories-btns">Cancer</button>
+        <button className="btn categories-btns">Healing</button>
+        <button className="btn categories-btns">Healing</button>
+        <button className="btn categories-btns">Peace</button>
+        <button className="btn categories-btns">Wisdom</button>
+        <button className="btn categories-btns">Courage</button>
+        <button className="btn categories-btns">Spiritual Life</button>
+        <button className="btn categories-btns">Marriage</button>
+      </div>
     </li>
   </ul></aside>);
 }
@@ -92,33 +94,36 @@ function PrayerList() {
   return (
     <section>
       <ul className="request-list">
-        {lists.map((list) => (
-          <li key={list.id} className="list-requests">
-            <div className="box">
-              <div className="post-details">
-                <div style={{ fontFamily: "Sono" }}>
-                  <p><span>From: </span>{list.user_name}</p>
-                  <p><span>Posted on: </span>{list.date}</p>
-                </div>
-                <p><span className="hashtag">#</span>{list.request_type}</p>
-              </div>
-              <p>{list.request_text}</p>
-              <div className="vote-buttons">
-                <button>👍{list.liked_prayer}</button>
-                <button>🙏{list.praying}</button>
-                <button>🤗{list.hug}</button>
-              </div>
-              <div className="prayer-tags">
-                <li className="tag">{list.category.join(" ")}</li>
-              </div>
-            </div>
-          </li>
-        ))}
+        {lists.map((list) => ( <Prayer prayerObj={list}/>))}
       </ul>
     </section>
   )
 }
 
+function Prayer({list}) {
+  return (
+    <li key={list.id} className="list-requests">
+      <div className="box">
+        <div className="post-details">
+          <div style={{ fontFamily: "Sono" }}>
+            <p><span>From: </span>{list.user_name}</p>
+            <p><span>Posted on: </span>{list.date}</p>
+          </div>
+          <p><span className="hashtag">#</span>{list.request_type}</p>
+        </div>
+        <p>{list.request_text}</p>
+        <div className="vote-buttons">
+          <button>👍{list.liked_prayer}</button>
+          <button>🙏{list.praying}</button>
+          <button>🤗{list.hug}</button>
+        </div>
+        <div className="prayer-tags">
+          <li className="tag">{list.category.join(" ")}</li>
+        </div>
+      </div>
+    </li>
+  )
+}
 
 function FooterMessage() {
   return (
