@@ -71,6 +71,7 @@ function NewPrayerRequestForm() {
 
 function CategoryFilter() {
   return (<aside><ul>
+    {/* list of buttons */}
     <li>
       <button className="btn categories-btns">All</button>
       <button className="btn categories-btns">Human Trafficing</button>
