@@ -95,7 +95,7 @@ function PrayerList() {
   return (
     <section>
       <ul className="request-list">
-        {lists.map((list) => (<PrayerBox list={list} />))}
+        {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
       </ul>
     </section>
   )
@@ -103,7 +103,7 @@ function PrayerList() {
 
 function PrayerBox({ list }) {
   return (
-    <li key={list.id} className="list-requests">
+    <li className="list-requests">
       <div className="box">
         <div className="post-details">
           <div style={{ fontFamily: "Sono" }}>
