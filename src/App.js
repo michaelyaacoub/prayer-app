@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import "./style.css"
 
 const dataRequests = [
@@ -94,13 +95,13 @@ function PrayerList() {
   return (
     <section>
       <ul className="request-list">
-        {lists.map((list) => ( <Prayer prayerObj={list}/>))}
+        {lists.map((list) => (<PrayerBox list={list} />))}
       </ul>
     </section>
   )
 }
 
-function Prayer({list}) {
+function PrayerBox({ list }) {
   return (
     <li key={list.id} className="list-requests">
       <div className="box">
