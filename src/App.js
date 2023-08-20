@@ -69,25 +69,33 @@ function NewPrayerRequestForm() {
       Prayer request form
     </form>);
 }
-
+const prayerFilter = [
+  { name: "Human Trafficing" },
+  { name: "Cancer" },
+  { name: "Healing" },
+  { name: "Peace" },
+  { name: "Wisdom" },
+  { name: "Courage" },
+  { name: "Spiritual Life" },
+  { name: "Marriage" },
+];
 function CategoryFilter() {
-  return (<aside><ul>
-    {/* list of buttons */}
-    <li>
-      <div>
-        <button className="btn categories-btns">All</button>
-        <button className="btn categories-btns">Human Trafficing</button>
-        <button className="btn categories-btns">Cancer</button>
-        <button className="btn categories-btns">Healing</button>
-        <button className="btn categories-btns">Healing</button>
-        <button className="btn categories-btns">Peace</button>
-        <button className="btn categories-btns">Wisdom</button>
-        <button className="btn categories-btns">Courage</button>
-        <button className="btn categories-btns">Spiritual Life</button>
-        <button className="btn categories-btns">Marriage</button>
-      </div>
-    </li>
-  </ul></aside>);
+  return (
+    <aside>
+      <ul>
+        {/* list of buttons */}
+        <li>
+          <button className="btn categories-btns">All</button>
+        </li>
+
+        {prayerFilter.map((category) => (
+          <li key={category.name}>
+            <button className="btn categories-btns">{category.name}</button>
+          </li>
+        )
+        )}
+      </ul>
+    </aside>);
 }
 
 function PrayerList() {
@@ -97,7 +105,7 @@ function PrayerList() {
       <ul className="request-list">
         {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
       </ul>
-      <p>There are {dataRequests.length} Prayer requests</p>
+      <p>There are {dataRequests.length} Prayer requests in the database</p>
     </section>
   )
 }
@@ -135,6 +143,19 @@ function FooterMessage() {
         <button id="btn-msg">x</button>
         <p>This app does not collect personl data or track any web activities!</p>
       </div>
+      <div className="pop-up">
+        <p>
+          Thank you for submiting this request, We will review request and post it, shorty.
+        </p>
+        <button id="btn-msg" className="fas fa-check"
+          style={{
+            backgroundColor: "#37e46a",
+            borderColor: "#37e46a",
+            cursor: "default"
+          }}
+        >✓</button>
+      </div>
+
     </footer>
   )
 }
