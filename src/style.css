@@ -7,7 +7,8 @@
 }
 
 body {
-    background-color: #1c1a1a;
+    /* #1c1a1a */
+    background-color: #08050a;
     color: #fafaf9;
     font-family: "Sono", sans-serif;
     padding: 48px 64px;
@@ -67,9 +68,10 @@ h2 {
 }
 
 .box {
+    /* #332a21 */
     font-size: 20px;
     line-height: 1.4;
-    background-color: #44403c;
+    background-color: #100f0e;
     margin-bottom: 16px;
     padding: 16px 24px;
     letter-spacing: -1px;
@@ -137,8 +139,8 @@ h2 {
     /* top/right - bottom - left */
     padding: 16px 0 13px;
     font-family: "Sono" sans-serif;
-
-    background-color: #010208;
+    /* #2e324b */
+    background-color: #1d1f2c;
     transition: 0.3s;
     border-radius: 20px;
     cursor: pointer;
@@ -251,7 +253,7 @@ label {
     flex-shrink: 0;
     gap: 10px;
     width: 100%;
-    margin-top: 100px;
+    margin-bottom: 50px;
     padding: 20px;
     background-color: aliceblue;
     color: #000;
