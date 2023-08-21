@@ -7,15 +7,15 @@
 }
 
 body {
-    /* #1c1a1a */
-    background-color: #08050a;
+    /* #1c1a1a - #08050a */
+    background-color: #1059cf;
     color: #fafaf9;
     font-family: "Sono", sans-serif;
     padding: 48px 64px;
 }
 
 /* MAIN LAYOUT */
-.container {
+#root {
     /* max width will allow the layout to properly spaced. */
     max-width: 1500px;
     /* When margin is set this way it allows the layout
@@ -148,7 +148,8 @@ h2 {
 
 .btn-large {
     font-size: 20px;
-    padding: 20px 30px 15px;
+    padding: 20px 30px 18px;
+    background-color: #0b64e0;
 }
 
 .categories-btns {
@@ -158,7 +159,7 @@ h2 {
 }
 
 button:hover {
-    background-color: #3f4d9a;
+    background-color: #012f6c;
     transition: 0.5s;
 }
 

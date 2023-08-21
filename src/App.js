@@ -48,7 +48,7 @@ function App() {
           <img src="logo.png" alt="this is share a prayer app logo!" />
           <h1>Prayer Requests</h1>
         </div>
-        <button className="btn btn-large activate-btn">Share A Prayer</button>
+        <button className="btn btn-large activate-btn" >Share A Prayer</button>
       </header>
 
       < NewPrayerRequestForm />
@@ -97,11 +97,13 @@ function PrayerList() {
       <ul className="request-list">
         {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
       </ul>
+      <p>There are {dataRequests.length} Prayer requests</p>
     </section>
   )
 }
 
-function PrayerBox({ list }) {
+function PrayerBox({ list, test }) {
+  console.log(test);
   return (
     <li className="list-requests">
       <div className="box">
