@@ -67,6 +67,60 @@ h2 {
     color: #fafaf9;
 }
 
+/* FORM */
+.fill-form {
+    border-radius: 20px;
+    background-color: #090807;
+    padding: 16px 40px;
+    margin-bottom: 40px;
+    gap: 10px;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+}
+
+.fill-form input,
+select,
+option,
+textarea {
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #292524;
+}
+
+select {
+    appearance: none;
+}
+
+select::-ms-expand {
+    /* Remove native arrow on IE */
+    display: none;
+}
+
+textarea {
+    resize: none;
+    font-size: 15px;
+}
+
+input[type=text]:focus {
+    border: 3px solid #292524;
+}
+
+input::placeholder {
+    color: #292524;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* BODY */
 .box {
     /* #332a21 */
     font-size: 20px;
@@ -189,63 +243,6 @@ button:hover {
 
 ul {
     list-style: none;
-}
-
-/* FORM */
-.fill-form {
-    border-radius: 20px;
-    background-color: #44403c;
-    padding: 16px 40px;
-    margin-bottom: 40px;
-    gap: 10px;
-
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr;
-}
-
-.hide-form {
-    display: none !important;
-}
-
-.fill-form input,
-select,
-option,
-textarea {
-    outline: none;
-    border: none;
-    padding: 10px;
-    font-family: inherit;
-    font-size: 15px;
-    border-radius: 5px;
-    color: #292524;
-}
-
-select {
-    appearance: none;
-}
-
-select::-ms-expand {
-    /* Remove native arrow on IE */
-    display: none;
-}
-
-textarea {
-    resize: none;
-    font-size: 15px;
-}
-
-input[type=text]:focus {
-    border: 3px solid #292524;
-}
-
-input::placeholder {
-    color: #292524;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
 }
 
 /* FOOTER */

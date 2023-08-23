@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import "./style.css"
 import { useState } from "react";
 
@@ -38,18 +37,25 @@ const dataRequests = [
   }
 ];
 
-
-
+const prayerFilter = [
+  { name: "Human Trafficing" },
+  { name: "Cancer" },
+  { name: "Healing" },
+  { name: "Peace" },
+  { name: "Wisdom" },
+  { name: "Courage" },
+  { name: "Spiritual Life" },
+  { name: "Marriage" },
+];
 
 function App() {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <>
+      <FooterMessage />
       <Header showForm={showForm} setShowForm={setShowForm} />
       {showForm ? <PrayerRequestForm /> : null}
-
-      <FooterMessage />
 
       <main className="main">
         <CategoryFilter />
@@ -74,22 +80,29 @@ function Header({ showForm, setShowForm }) {
 }
 
 function PrayerRequestForm() {
+  const [text, setText] = useState("")
   return (
     <form className="fill-form">
-      Prayer request form "hide-form"
+      <input
+        type="text"
+        name="user_name"
+        id="user_name"
+        placeholder="First name:"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <select name="selection" id="selection">
+        <option value="">Choose prayer category</option>
+        {prayerFilter.map((filt) => (
+          <option value={filt.name}>{filt.name.toUpperCase()}</option>
+        ))}
+      </select>
+      <textarea name="prayer" rows="1" cols="40" placeholder="Type your prayer request"></textarea>
+      <button id="submit-post" className="btn btn-large">Post Prayer</button>
     </form>
   );
 }
-const prayerFilter = [
-  { name: "Human Trafficing" },
-  { name: "Cancer" },
-  { name: "Healing" },
-  { name: "Peace" },
-  { name: "Wisdom" },
-  { name: "Courage" },
-  { name: "Spiritual Life" },
-  { name: "Marriage" },
-];
+
 function CategoryFilter() {
   return (
     <aside>
@@ -147,27 +160,19 @@ function PrayerBox({ list, test }) {
 }
 
 function FooterMessage() {
-  return (
-    <footer>
-      <div className="pop-up">
-        <button id="btn-msg">x</button>
-        <p>This app does not collect personl data or track any web activities!</p>
-      </div>
-      <div className="pop-up">
-        <p>
-          Thank you for submiting this request, We will review request and post it, shorty.
-        </p>
-        <button id="btn-msg" className="fas fa-check"
-          style={{
-            backgroundColor: "#37e46a",
-            borderColor: "#37e46a",
-            cursor: "default"
-          }}
-        >✓</button>
-      </div>
+  const [close, setClose] = useState(true);
 
-    </footer>
+  const HandleClose = () => {
+    setClose(false)
+  }
+  return (
+    close ? (
+      <div className="pop-up">
+        <button id="btn-msg" closeBtn={close} onClick={HandleClose}>x</button>
+        <p>This app does not collect personl data or track any web activities!</p>
+      </div>) : null
   )
+
 }
 
 export default App;
