@@ -139,8 +139,8 @@ h2 {
     /* top/right - bottom - left */
     padding: 16px 0 13px;
     font-family: "Sono" sans-serif;
-    /* #2e324b */
-    background-color: #1d1f2c;
+    /* #2e324b - #1d1f2c*/
+    background-color: #100f0e;
     transition: 0.3s;
     border-radius: 20px;
     cursor: pointer;
@@ -149,7 +149,8 @@ h2 {
 .btn-large {
     font-size: 20px;
     padding: 20px 30px 18px;
-    background-color: #0b64e0;
+    background-color: #100f0e;
+    color: inherit;
 }
 
 .categories-btns {

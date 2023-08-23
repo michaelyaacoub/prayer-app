@@ -1,5 +1,6 @@
 import { func } from "prop-types";
 import "./style.css"
+import { useState } from "react";
 
 const dataRequests = [
   {
@@ -41,17 +42,12 @@ const dataRequests = [
 
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <>
-      <header className="header">
-        <div className="logo">
-          <img src="logo.png" alt="this is share a prayer app logo!" />
-          <h1>Prayer Requests</h1>
-        </div>
-        <button className="btn btn-large activate-btn" >Share A Prayer</button>
-      </header>
-
-      < NewPrayerRequestForm />
+      <Header showForm={showForm} setShowForm={setShowForm} />
+      {showForm ? <PrayerRequestForm /> : null}
 
       <FooterMessage />
 
@@ -63,11 +59,26 @@ function App() {
   );
 }
 
-function NewPrayerRequestForm() {
+function Header({ showForm, setShowForm }) {
   return (
-    <form className="fill-form hide-form">
-      Prayer request form
-    </form>);
+    <header className="header">
+      <div className="logo">
+        <img src="logo.png" alt="this is share a prayer app logo!" />
+        <h1>Prayer Requests</h1>
+      </div>
+      <button className="btn btn-large activate-btn"
+        onClick={() => setShowForm((show) => !show)}
+      >{showForm ? "Close" : "Share A Prayer"}</button>
+    </header>
+  )
+}
+
+function PrayerRequestForm() {
+  return (
+    <form className="fill-form">
+      Prayer request form "hide-form"
+    </form>
+  );
 }
 const prayerFilter = [
   { name: "Human Trafficing" },
@@ -111,7 +122,6 @@ function PrayerList() {
 }
 
 function PrayerBox({ list, test }) {
-  console.log(test);
   return (
     <li className="list-requests">
       <div className="box">
