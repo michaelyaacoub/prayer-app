@@ -53,12 +53,12 @@ function App() {
 
       < NewPrayerRequestForm />
 
+      <FooterMessage />
+
       <main className="main">
         <CategoryFilter />
         <PrayerList />
       </main >
-
-      <FooterMessage />
     </>
   );
 }
