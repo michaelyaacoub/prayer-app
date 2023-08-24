@@ -63,7 +63,7 @@ function App() {
 
       <main className="main">
         <CategoryFilter setCurrentCategory={setCurrentCategory} />
-        {isLoading ? <Loader /> : <PrayerList lists={lists} />}
+        {isLoading ? <Loader /> : <PrayerList lists={lists} setLists={setLists} />}
 
       </main >
 
@@ -97,26 +97,27 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
   const [message, setMessage] = useState("");
   const [requestType, setRequestType] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     // 1. prevent page from reload
     e.preventDefault();
     // 2. data is valid ? create a new prayer request : display err msg
     if (userName && category && message && requestType) {
-      // 3. create new prayer object and update state
-      const newPrayerRequest =
-      {
-        id: 1,
-        userName,
-        date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
-        requestType,
-        message,
-        category,
-        liked_prayer: 62,
-        praying: 41,
-        hug: 97
-      }
+      // 3. upload prayer requests to supabase
+      const { data: newPrayerRequest, error } = await supabase
+        .from("prayer_request")
+        .insert([{
+          userName,
+          requestType,
+          message,
+          category,
+          date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
+        }])
+        .select()
+        .order('date', { descending: true });
+      console.log(newPrayerRequest)
       // 4. add new prayer object to UI: add prayer to state
-      setLists((lists) => [newPrayerRequest, ...lists])
+      if (!error)
+        setLists((lists) => [newPrayerRequest[0], ...lists])
       // 5. reset input fields
       setUserName("");
       setCategory("");
@@ -206,13 +207,13 @@ function CategoryFilter({ setCurrentCategory }) {
     </aside>);
 }
 
-function PrayerList({ lists }) {
+function PrayerList({ lists, setLists }) {
   if (lists.length === 0)
     return <p className="message-display">No requests under this category yet!</p>
   return (
     <section>
       <ul className="request-list">
-        {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
+        {lists.map((list) => (<PrayerBox key={list.id} list={list} setLists={setLists} />))}
       </ul>
       {/* dbr --> databaseReport
           "let's have a route: something like prayer.com/dbr"
@@ -223,7 +224,20 @@ function PrayerList({ lists }) {
   )
 }
 
-function PrayerBox({ list }) {
+function PrayerBox({ list, setLists }) {
+  async function handleVotes() {
+    const { data: updatedVote, error } = await supabase
+      .from("prayer_request")
+      .update({ liked_prayer: list.liked_prayer + 1 })
+      .eq("id", list.id)
+      .select()
+
+    console.log(updatedVote)
+    if (!error)
+      setLists((lists) => lists.map((l) => (l.id === list.id ?
+        updatedVote[0] : l))
+    )
+  }
   return (
     <ul>
       <li className="list-requests">
@@ -237,7 +251,7 @@ function PrayerBox({ list }) {
           </div>
           <p>{list.message}</p>
           <div className="vote-buttons">
-            <button>👍{list.liked_prayer}</button>
+            <button onClick={handleVotes}>👍{list.liked_prayer}</button>
             <button>🙏{list.praying}</button>
             <button>🤗{list.hug}</button>
           </div>
