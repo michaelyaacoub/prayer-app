@@ -1,46 +1,13 @@
-import './style.css';
 import { useState, useEffect } from "react";
+import supabase from "./supabase";
+import './style.css';
 
-const dataRequests = [
-  {
-    id: 1,
-    userName: "Michael",
-    date: "08-07-2023",
-    prayerType: "Prayer Request",
-    message: "Pray for my roommate Craig, he has stage 4 cancer and has been fighting cancer for the past 2 years. Just pray that God may be glorfied and heal him and he goes cancer free.",
-    category: ["Cancer", "Healing", "Courage", "Peace"],
-    liked_prayer: 62,
-    praying: 41,
-    hug: 97
-  },
-  {
-    id: 2,
-    userName: "Diana",
-    date: "08-11-2023",
-    prayerType: "Praise report",
-    message: "Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances.",
-    category: ["Peace", "Joy"],
-    liked_prayer: 12,
-    praying: 33,
-    hug: 5
-  },
-  {
-    id: 3,
-    userName: "Ryan",
-    date: "08-12-2023",
-    prayerType: "Prayer Request",
-    message: "My mom's cousin died on the 4th of July, and her mom has been a huge support. Her mom’s cousin’s parents are still alive, so pray for everyone involved and potential drama.",
-    category: ["Peace", "Support", "Courage"],
-    liked_prayer: 21,
-    praying: 13,
-    hug: 7
-  }
-];
 
 const prayerFilter = [
-  { name: "Human Trafficing" },
-  { name: "Cancer" },
   { name: "Healing" },
+  { name: "Cancer" },
+  { name: "Provision" },
+  { name: "Human Trafficing" },
   { name: "Peace" },
   { name: "Wisdom" },
   { name: "Courage" },
@@ -59,8 +26,30 @@ function App() {
   }, []);
 
   const [showForm, setShowForm] = useState(false);
-  const [lists, setLists] = useState(dataRequests);
+  const [lists, setLists] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("all");
 
+  useEffect(function () {
+    async function getRequests() {
+      setIsLoading(true)
+
+      let query = supabase.from("prayer_request").select('*');
+      if (currentCategory !== "all")
+        query = query.eq("category", currentCategory);
+
+
+      const { data: lists, error } = await query
+        .limit(1000)
+
+      if (!error)
+        setLists(lists);
+      else
+        alert("There was a problem fetching data.")
+      setIsLoading(false);
+    }
+    getRequests()
+  }, [currentCategory])
 
   return (
     <>
@@ -69,12 +58,15 @@ function App() {
       {showForm ? <PrayerRequestForm
         setLists={setLists}
         setCloseForm={setShowForm}
-      /> : null}
+      /> : null
+      }
 
       <main className="main">
-        <CategoryFilter />
-        <PrayerList lists={lists} />
+        <CategoryFilter setCurrentCategory={setCurrentCategory} />
+        {isLoading ? <Loader /> : <PrayerList lists={lists} />}
+
       </main >
+
     </>
   );
 }
@@ -93,24 +85,30 @@ function Header({ showForm, setShowForm }) {
   )
 }
 
+function Loader() {
+  return (
+    <p className="loader">Loading...</p>
+  )
+}
+
 function PrayerRequestForm({ setLists, setCloseForm }) {
   const [userName, setUserName] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
-  const [prayerType, setPrayerType] = useState("");
+  const [requestType, setRequestType] = useState("");
 
   function handleSubmit(e) {
     // 1. prevent page from reload
     e.preventDefault();
     // 2. data is valid ? create a new prayer request : display err msg
-    if (userName && category && message && prayerType) {
+    if (userName && category && message && requestType) {
       // 3. create new prayer object and update state
       const newPrayerRequest =
       {
         id: 1,
         userName,
         date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
-        prayerType,
+        requestType,
         message,
         category,
         liked_prayer: 62,
@@ -123,7 +121,7 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
       setUserName("");
       setCategory("");
       setMessage("");
-      setPrayerType("");
+      setRequestType("");
 
       // 6. close form
       setCloseForm(false);
@@ -169,8 +167,8 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
       >
       </textarea>
       <select name="selection" id=""
-        value={prayerType}
-        onChange={(e) => setPrayerType(e.target.value)}
+        value={requestType}
+        onChange={(e) => setRequestType(e.target.value)}
       >
         <option value="">Choose Prayer/Praise Catagory</option>
         {requestOptions.map((req) => (
@@ -187,16 +185,20 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
   );
 }
 
-function CategoryFilter() {
+function CategoryFilter({ setCurrentCategory }) {
   return (
     <aside>
       <ul>
         <li>
-          <button className="btn categories-btns">All</button>
+          <button className="btn categories-btns" onClick={() => setCurrentCategory("all")}>All</button>
         </li>
         {prayerFilter.map((category) => (
           <li key={category.name}>
-            <button className="btn categories-btns">{category.name}</button>
+            <button className="btn categories-btns"
+              onClick={() => setCurrentCategory(category.name)}
+            >{
+                category.name}
+            </button>
           </li>
         )
         )}
@@ -210,35 +212,39 @@ function PrayerList({ lists }) {
       <ul className="request-list">
         {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
       </ul>
-      <p>There are {dataRequests.length} Prayer requests in the database also,
-        let's have new route to tell us how many requests are in the db. "something like prayer.com/dbr"
-      </p>
+      {/* dbr --> databaseReport
+          "let's have a route: something like prayer.com/dbr"
+      */}
+      {/* <p>There are {dataRequests.length} Prayer requests and 5 Praise reports in the database.</p> */}
+      <p>There are {lists.length} requests in the database...</p>
     </section>
   )
 }
 
 function PrayerBox({ list }) {
   return (
-    <li className="list-requests">
-      <div className="box">
-        <div className="post-details">
-          <div style={{ fontFamily: "Sono" }}>
-            <p><span>From: </span>{list.userName}</p>
-            <p><span>Posted on: </span>{list.date}</p>
+    <ul>
+      <li className="list-requests">
+        <div className="box">
+          <div className="post-details">
+            <div style={{ fontFamily: "Sono" }}>
+              <p><span>From: </span>{list.userName}</p>
+              <p><span>Posted on: </span>{list.date}</p>
+            </div>
+            <p><span className="hashtag">#</span>{list.requestType}</p>
           </div>
-          <p><span className="hashtag">#</span>{list.prayerType}</p>
+          <p>{list.message}</p>
+          <div className="vote-buttons">
+            <button>👍{list.liked_prayer}</button>
+            <button>🙏{list.praying}</button>
+            <button>🤗{list.hug}</button>
+          </div>
+          <div className="prayer-tags">
+            <li className="tag">{list.category}</li>
+          </div>
         </div>
-        <p>{list.message}</p>
-        <div className="vote-buttons">
-          <button>👍{list.liked_prayer}</button>
-          <button>🙏{list.praying}</button>
-          <button>🤗{list.hug}</button>
-        </div>
-        <div className="prayer-tags">
-          <li className="tag">{list.category}</li>
-        </div>
-      </div>
-    </li>
+      </li>
+    </ul>
   )
 }
 
