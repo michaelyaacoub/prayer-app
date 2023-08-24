@@ -42,11 +42,11 @@ body {
     }
 }
 
-.loader {
+.message-display {
     text-align: center;
     text-transform: uppercase;
-    font-size: 30px;
-    font-weight: 600;
+    font-family: "Sono", sans-serif, Arial;
+    font-size: 25px;
 }
 
 /* ELEMENTS */
@@ -152,7 +152,6 @@ label {
     align-self: self-start;
     justify-content: space-between;
     color: #aaaaaa;
-    font-family: Arial;
     font-size: 15px;
     font-weight: 600;
 }

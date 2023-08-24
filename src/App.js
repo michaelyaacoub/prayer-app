@@ -87,7 +87,7 @@ function Header({ showForm, setShowForm }) {
 
 function Loader() {
   return (
-    <p className="loader">Loading...</p>
+    <p className="message-display">Loading...</p>
   )
 }
 
@@ -207,6 +207,8 @@ function CategoryFilter({ setCurrentCategory }) {
 }
 
 function PrayerList({ lists }) {
+  if (lists.length === 0)
+    return <p className="message-display">No requests under this category yet!</p>
   return (
     <section>
       <ul className="request-list">
