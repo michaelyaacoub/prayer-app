@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer App</title>
+    <link rel="icon" type="prayer-icon" style="border-radius: 50%;" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Sono:wght@400;600;700&display=swap"
@@ -13,65 +14,133 @@
 </head>
 
 <body>
-    <header class="header">
-        <img src="logo.png" height="68" width="68" alt="this is share a prayer app logo!" />
-        <h1>Prayer & Praise App</h1>
-        <h2>I have a prayper Request</h2>
-        <h2>I have a praise report</h2>
-        <button>Share A Prayer</button>
-    </header>
-    <section>
-        <form class="fill-form">
-            <input type="text" name="praise_report" id="" placeholder="Share your name with us: ">
-            <input type="text" name="prayer_request" id="" placeholder="Share a prayer request..." /><span>200</span>
-            <input type="text" name="asking_questions" id="" placeholder="Ask a question...?">
-            <select name="selection" id="">
-                <option value="">Choose Prayer/Praise Catagory</option>
-                <option value="prayer_request">Prayer request</option>
-                <option value="praise_report">Praise report</option>
-            </select>
-        </form>
-    </section>
-    <main>
-        <aside>
-            <ul>
-                <li><button>All</button></li>
-                <li><button>Cancer Free</button></li>
-                <li><button>Spiritual Battles</button></li>
-                <li><button>Marriage</button></li>
-                <li><button>Healing</button></li>
-            </ul>
-        </aside>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="logo.png" alt="this is share a prayer app logo!" />
+                <h1>Prayer Requests</h1>
+            </div>
+            <!-- <h2>I have a prayper Request</h2>
+        <h2>I have a praise report</h2> -->
+            <button class="btn btn-large activate-btn">Share A Prayer</button>
+        </header>
         <section>
-            <ul>
-                <li>
-                    <li class="box">
-                    <p>Pray for my roommate, he has a stage 4 cancer.
-                        His name is Craig, he is one of the assistant pastors at our church as well.
-                        <a href="https://www.bible.com/" target="_blank">(Sourse)</a>
-                        <span class="tag">#Cancer Free#</span>
-                    </p>
-                    <div>
-                        <button>👍 <strong>17</strong></button>
-                        <button>🙏 <strong>24</strong></button>
-                        <button>🤗 <strong>9</strong></button>
-                    </div>
-                </li>
-                <li>
-                    <li class="box">
-                    <p>Priase report - my classmate came to know the Lord last Sunday.
-                        <a href="https://www.bible.com/" target="_blank">(Sourse)</a>
-                        <span class="tag">#Priase Report#</span>
-                    </p>
-                    <div>
-                        <button>👍 <strong>12</strong></button>
-                        <button>🙏 <strong>23</strong></button>
-                        <button>🤗 <strong>4</strong></button>
-                    </div>
-                </li>
-            </ul>
+            <form class="fill-form hide-form">
+                <label for="user_name">Put your name:</label>
+                <input type="text" name="user_name" id="" placeholder="First name: ">
+
+                <select name="selection" id="">
+                    <option value="">Choose prayer catagory</option>
+                    <option value="prayer_request">Prayer request</option>
+                    <option value="praise_report">Praise report</option>
+                </select>
+
+                <label>Tell us your prayer request:</label>
+                <textarea name="prayer" rows="5" cols="40" placeholder="Tell us your prayer request here"></textarea>
+
+                <button id="submit-post" class="btn btn-large">Post Prayer</button>
+            </form>
         </section>
-    </main>
+        <main class="main">
+            <aside>
+                <ul>
+                    <li><button class="btn categories-btns">All</button></li>
+                    <li><button class="btn categories-btns">Human Trafficing</button></li>
+                    <li><button class="btn categories-btns">Cancer</button></li>
+                    <li><button class="btn categories-btns">Healing</button></li>
+                    <li><button class="btn categories-btns">Peace</button></li>
+                    <li><button class="btn categories-btns">Wisdom</button></li>
+                    <li><button class="btn categories-btns">Courage</button></li>
+                    <li><button class="btn categories-btns">Spiritual Battles</button></li>
+                    <li><button class="btn categories-btns">Marriage</button></li>
+                </ul>
+            </aside>
+            <section>
+                <ul class="request-list">
+                    <li class="list-requests">
+                    <li class="box">
+                        <div class="post-details">
+                            <div style="font-family: Sono;">
+                                <p><span>From: </span>Michael</p>
+                                <p><span>Posted on: </span>08-07-2023</p>
+                            </div>
+                            <p><span class="hashtag">#</span>Prayer Request</p>
+                        </div>
+                        <p>
+                            Pray for my roommate Craig, he has stage 4 cancer and has been fighting cancer for the past
+                            2 years.
+                            Just pray that God may be glorfied and heal him and he goes cancer free.
+                        </p>
+                        <div class="vote-buttons">
+                            <button>👍 17</button>
+                            <button>🙏 24</button>
+                            <button>🤗 9</button>
+                        </div>
+                        <div class="prayer-tags">
+                            <span class="tag">Cancer</span>
+                            <span class="tag">Healing</span>
+                            <span class="tag">Courage</span>
+                            <span class="tag">Peace</span>
+                        </div>
+                    </li>
+                    <li class="box">
+                        <div class="post-details">
+                            <div style="font-family: Sono;">
+                                <p><span>From: </span>Diana</p>
+                                <p><span>Posted on: </span>08-06-2023</p>
+                            </div>
+                            <p><span class="hashtag">#</span>Praise report</p>
+                        </div>
+                        <p>
+                            Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances.
+                            Pray for peace and joy in her circumstances.
+                        </p>
+                        <div class="vote-buttons">
+                            <button>👍 17</button>
+                            <button>🙏 24</button>
+                            <button>🤗 9</button>
+                        </div>
+                        <div class="prayer-tags">
+                            <span class="tag">Peace</span>
+                            <span class="tag">Joy</span>
+                        </div>
+                    </li>
+                    <li>
+                    <li class="box">
+                        <div class="post-details">
+                            <div style="font-family: Sono;">
+                                <p><span>From: </span>Ryan</p>
+                                <p><span>Posted on: </span>08-05-2023</p>
+                            </div>
+                            <p><span class="hashtag">#</span>Prayer request</p>
+                        </div>
+                        <p>
+                            My mom's cousin died on the 4th of July, and her mom has been a huge support.
+                            Her mom’s cousin’s parents are still alive, so pray for everyone involved and potential
+                            drama.
+                        </p>
+                        <div class="vote-buttons">
+                            <button>👍 12</button>
+                            <button>🙏 23></button>
+                            <button>🤗 4</button>
+                        </div>
+                        <div class="prayer-tags">
+                            <span class="tag">Courage</span>
+                            <span class="tag">support</span>
+                            <span class="tag">Peace</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="pop-up">
+            <button id="btn-msg">x</button>
+            <p>This app does not collect personl data or track any web activities!</p>
+        </div>
+    </footer>
 </body>
+<script src="script.js"></script>
 
 </html>
