@@ -226,6 +226,7 @@ function PrayerList({ lists, setLists }) {
 
 function PrayerBox({ list, setLists }) {
   const [isUpdateing, setIsUpdating] = useState(false);
+  const isPriority = list.praying + list.hug < list.liked_prayer;
   async function handleVotes(columnName) {
     setIsUpdating(true)
     const { data: updatedVote, error } = await supabase
@@ -251,7 +252,10 @@ function PrayerBox({ list, setLists }) {
             </div>
             <p><span className="hashtag">#</span>{list.requestType}</p>
           </div>
-          <p>{list.message}</p>
+          <p>
+          {isPriority ? <span className="priority">[❗️PRIORITY]</span> : null}
+            {list.message}
+            </p>
           <div className="vote-buttons">
             <button
               onClick={() => handleVotes("liked_prayer")}
