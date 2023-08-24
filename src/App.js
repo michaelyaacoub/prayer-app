@@ -253,7 +253,7 @@ function PrayerBox({ list, setLists }) {
             <p><span className="hashtag">#</span>{list.requestType}</p>
           </div>
           <p>
-          {isPriority ? <span className="priority">[❗️PRIORITY]</span> : null}
+          {isPriority ? <span className="priority-tag">[❗️PRIORITY]</span> : null}
             {list.message}
             </p>
           <div className="vote-buttons">
