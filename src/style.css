@@ -39,6 +39,7 @@ body {
 
 section {
     overflow: scroll;
+    scroll-behavior: smooth;
     padding-bottom: 40px;
 }
 
@@ -335,9 +336,9 @@ ul {
 }
 
 @media (max-width: 600px) {
-    #root {
+    /* #root {
         padding: 24px;
-    }
+    } */
 
     .header {
         flex-direction: column;
@@ -350,6 +351,9 @@ ul {
 
     .box {
         padding: 12px 16px;
+    }
+    h1 {
+        font-size: 20px;
     }
 }
 
