@@ -67,6 +67,60 @@ h2 {
     color: #fafaf9;
 }
 
+/* FORM */
+.fill-form {
+    border-radius: 20px;
+    background-color: #090807;
+    padding: 16px 40px;
+    margin-bottom: 40px;
+    gap: 10px;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+}
+
+.fill-form input,
+select,
+option,
+textarea {
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #292524;
+}
+
+select {
+    appearance: none;
+}
+
+select::-ms-expand {
+    /* Remove native arrow on IE */
+    display: none;
+}
+
+textarea {
+    resize: none;
+    font-size: 15px;
+}
+
+input[type=text]:focus {
+    border: 3px solid #292524;
+}
+
+input::placeholder {
+    color: #292524;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* BODY */
 .box {
     /* #332a21 */
     font-size: 20px;
@@ -81,6 +135,7 @@ h2 {
     flex-direction: column;
     align-items: self-start;
     gap: 5px;
+    word-break: break-word;
 }
 
 .post-details {
@@ -139,8 +194,8 @@ h2 {
     /* top/right - bottom - left */
     padding: 16px 0 13px;
     font-family: "Sono" sans-serif;
-    /* #2e324b */
-    background-color: #1d1f2c;
+    /* #2e324b - #1d1f2c*/
+    background-color: #100f0e;
     transition: 0.3s;
     border-radius: 20px;
     cursor: pointer;
@@ -149,7 +204,8 @@ h2 {
 .btn-large {
     font-size: 20px;
     padding: 20px 30px 18px;
-    background-color: #0b64e0;
+    background-color: #100f0e;
+    color: inherit;
 }
 
 .categories-btns {
@@ -188,63 +244,6 @@ button:hover {
 
 ul {
     list-style: none;
-}
-
-/* FORM */
-.fill-form {
-    border-radius: 20px;
-    background-color: #44403c;
-    padding: 16px 40px;
-    margin-bottom: 40px;
-    gap: 10px;
-
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr;
-}
-
-.hide-form {
-    display: none !important;
-}
-
-.fill-form input,
-select,
-option,
-textarea {
-    outline: none;
-    border: none;
-    padding: 10px;
-    font-family: inherit;
-    font-size: 15px;
-    border-radius: 5px;
-    color: #292524;
-}
-
-select {
-    appearance: none;
-}
-
-select::-ms-expand {
-    /* Remove native arrow on IE */
-    display: none;
-}
-
-textarea {
-    resize: none;
-    font-size: 15px;
-}
-
-input[type=text]:focus {
-    border: 3px solid #292524;
-}
-
-input::placeholder {
-    color: #292524;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
 }
 
 /* FOOTER */
