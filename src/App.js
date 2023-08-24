@@ -1,13 +1,13 @@
-import "./style.css"
-import { useState } from "react";
+import './style.css';
+import { useState, useEffect } from "react";
 
 const dataRequests = [
   {
     id: 1,
-    user_name: "Michael",
+    userName: "Michael",
     date: "08-07-2023",
-    request_type: "Prayer Request",
-    request_text: "Pray for my roommate Craig, he has stage 4 cancer and has been fighting cancer for the past 2 years. Just pray that God may be glorfied and heal him and he goes cancer free.",
+    prayerType: "Prayer Request",
+    message: "Pray for my roommate Craig, he has stage 4 cancer and has been fighting cancer for the past 2 years. Just pray that God may be glorfied and heal him and he goes cancer free.",
     category: ["Cancer", "Healing", "Courage", "Peace"],
     liked_prayer: 62,
     praying: 41,
@@ -15,10 +15,10 @@ const dataRequests = [
   },
   {
     id: 2,
-    user_name: "Diana",
+    userName: "Diana",
     date: "08-11-2023",
-    request_type: "Praise report",
-    request_text: "Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances.",
+    prayerType: "Praise report",
+    message: "Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances. Pray for peace and joy in her circumstances.",
     category: ["Peace", "Joy"],
     liked_prayer: 12,
     praying: 33,
@@ -26,10 +26,10 @@ const dataRequests = [
   },
   {
     id: 3,
-    user_name: "Ryan",
+    userName: "Ryan",
     date: "08-12-2023",
-    request_type: "Prayer Request",
-    request_text: "My mom's cousin died on the 4th of July, and her mom has been a huge support. Her mom’s cousin’s parents are still alive, so pray for everyone involved and potential drama.",
+    prayerType: "Prayer Request",
+    message: "My mom's cousin died on the 4th of July, and her mom has been a huge support. Her mom’s cousin’s parents are still alive, so pray for everyone involved and potential drama.",
     category: ["Peace", "Support", "Courage"],
     liked_prayer: 21,
     praying: 13,
@@ -48,18 +48,32 @@ const prayerFilter = [
   { name: "Marriage" },
 ];
 
+const requestOptions = [
+  { request: "Prayer Request" },
+  { request: "Praise Report" }
+]
 function App() {
+  useEffect(() => {
+    // Scroll to the top of the page on component mount
+    window.scrollTo(0, 0);
+  }, []);
+
   const [showForm, setShowForm] = useState(false);
+  const [lists, setLists] = useState(dataRequests);
+
 
   return (
     <>
       <FooterMessage />
       <Header showForm={showForm} setShowForm={setShowForm} />
-      {showForm ? <PrayerRequestForm /> : null}
+      {showForm ? <PrayerRequestForm
+        setLists={setLists}
+        setCloseForm={setShowForm}
+      /> : null}
 
       <main className="main">
         <CategoryFilter />
-        <PrayerList />
+        <PrayerList lists={lists} />
       </main >
     </>
   );
@@ -79,25 +93,95 @@ function Header({ showForm, setShowForm }) {
   )
 }
 
-function PrayerRequestForm() {
-  const [text, setText] = useState("")
+function PrayerRequestForm({ setLists, setCloseForm }) {
+  const [userName, setUserName] = useState("");
+  const [category, setCategory] = useState("");
+  const [message, setMessage] = useState("");
+  const [prayerType, setPrayerType] = useState("");
+
+  function handleSubmit(e) {
+    // 1. prevent page from reload
+    e.preventDefault();
+    // 2. data is valid ? create a new prayer request : display err msg
+    if (userName && category && message && prayerType) {
+      // 3. create new prayer object and update state
+      const newPrayerRequest =
+      {
+        id: 1,
+        userName,
+        date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
+        prayerType,
+        message,
+        category,
+        liked_prayer: 62,
+        praying: 41,
+        hug: 97
+      }
+      // 4. add new prayer object to UI: add prayer to state
+      setLists((lists) => [newPrayerRequest, ...lists])
+      // 5. reset input fields
+      setUserName("");
+      setCategory("");
+      setMessage("");
+      setPrayerType("");
+
+      // 6. close form
+      setCloseForm(false);
+    }
+  }
+
   return (
-    <form className="fill-form">
+    <form
+      className="fill-form"
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         name="user_name"
         id="user_name"
         placeholder="First name:"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
       />
-      <select name="selection" id="selection">
-        <option value="">Choose prayer category</option>
+      <select
+        name="selection"
+        id="selection"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option>Choose prayer category</option>
         {prayerFilter.map((filt) => (
-          <option value={filt.name}>{filt.name.toUpperCase()}</option>
+          <option
+            key={filt.name}
+            value={filt.name}
+          >
+            {filt.name.toUpperCase()}
+          </option>
         ))}
       </select>
-      <textarea name="prayer" rows="1" cols="40" placeholder="Type your prayer request"></textarea>
+      <textarea
+        name="prayer"
+        rows="1"
+        cols="40"
+        placeholder="Type your prayer request"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      >
+      </textarea>
+      <select name="selection" id=""
+        value={prayerType}
+        onChange={(e) => setPrayerType(e.target.value)}
+      >
+        <option value="">Choose Prayer/Praise Catagory</option>
+        {requestOptions.map((req) => (
+          <option
+            key={req.request}
+            value={req.request}
+          >
+            {req.request}
+          </option>
+        ))}
+      </select>
       <button id="submit-post" className="btn btn-large">Post Prayer</button>
     </form>
   );
@@ -107,11 +191,9 @@ function CategoryFilter() {
   return (
     <aside>
       <ul>
-        {/* list of buttons */}
         <li>
           <button className="btn categories-btns">All</button>
         </li>
-
         {prayerFilter.map((category) => (
           <li key={category.name}>
             <button className="btn categories-btns">{category.name}</button>
@@ -122,37 +204,38 @@ function CategoryFilter() {
     </aside>);
 }
 
-function PrayerList() {
-  const lists = dataRequests;
+function PrayerList({ lists }) {
   return (
     <section>
       <ul className="request-list">
         {lists.map((list) => (<PrayerBox key={list.id} list={list} />))}
       </ul>
-      <p>There are {dataRequests.length} Prayer requests in the database</p>
+      <p>There are {dataRequests.length} Prayer requests in the database also,
+        let's have new route to tell us how many requests are in the db. "something like prayer.com/dbr"
+      </p>
     </section>
   )
 }
 
-function PrayerBox({ list, test }) {
+function PrayerBox({ list }) {
   return (
     <li className="list-requests">
       <div className="box">
         <div className="post-details">
           <div style={{ fontFamily: "Sono" }}>
-            <p><span>From: </span>{list.user_name}</p>
+            <p><span>From: </span>{list.userName}</p>
             <p><span>Posted on: </span>{list.date}</p>
           </div>
-          <p><span className="hashtag">#</span>{list.request_type}</p>
+          <p><span className="hashtag">#</span>{list.prayerType}</p>
         </div>
-        <p>{list.request_text}</p>
+        <p>{list.message}</p>
         <div className="vote-buttons">
           <button>👍{list.liked_prayer}</button>
           <button>🙏{list.praying}</button>
           <button>🤗{list.hug}</button>
         </div>
         <div className="prayer-tags">
-          <li className="tag">{list.category.join(" ")}</li>
+          <li className="tag">{list.category}</li>
         </div>
       </div>
     </li>
@@ -168,7 +251,7 @@ function FooterMessage() {
   return (
     close ? (
       <div className="pop-up">
-        <button id="btn-msg" closeBtn={close} onClick={HandleClose}>x</button>
+        <button id="btn-msg" closebtn={close.toString()} onClick={HandleClose}>x</button>
         <p>This app does not collect personl data or track any web activities!</p>
       </div>) : null
   )
