@@ -225,10 +225,12 @@ function PrayerList({ lists, setLists }) {
 }
 
 function PrayerBox({ list, setLists }) {
-  async function handleVotes() {
+  const [isUpdateing, setIsUpdating] = useState(false);
+  async function handleVotes(columnName) {
+    setIsUpdating(true)
     const { data: updatedVote, error } = await supabase
       .from("prayer_request")
-      .update({ liked_prayer: list.liked_prayer + 1 })
+      .update({ [columnName]: list[columnName] + 1 })
       .eq("id", list.id)
       .select()
 
@@ -236,7 +238,7 @@ function PrayerBox({ list, setLists }) {
     if (!error)
       setLists((lists) => lists.map((l) => (l.id === list.id ?
         updatedVote[0] : l))
-    )
+      )
   }
   return (
     <ul>
@@ -251,9 +253,17 @@ function PrayerBox({ list, setLists }) {
           </div>
           <p>{list.message}</p>
           <div className="vote-buttons">
-            <button onClick={handleVotes}>👍{list.liked_prayer}</button>
-            <button>🙏{list.praying}</button>
-            <button>🤗{list.hug}</button>
+            <button
+              onClick={() => handleVotes("liked_prayer")}
+              disabled={isUpdateing}>👍 {list.liked_prayer}</button>
+            <button
+              onClick={() => handleVotes("praying")}
+              disabled={isUpdateing}
+            >🙏 {list.praying}</button>
+            <button
+              onClick={() => handleVotes("hug")}
+              disabled={isUpdateing}
+            >🤗 {list.hug}</button>
           </div>
           <div className="prayer-tags">
             <li className="tag">{list.category}</li>
