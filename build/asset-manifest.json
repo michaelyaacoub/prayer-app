@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/prayer-app/static/css/main.3510a02b.css",
+    "main.js": "/prayer-app/static/js/main.ea00cead.js",
+    "static/js/526.fb4f02d3.chunk.js": "/prayer-app/static/js/526.fb4f02d3.chunk.js",
+    "index.html": "/prayer-app/index.html",
+    "main.3510a02b.css.map": "/prayer-app/static/css/main.3510a02b.css.map",
+    "main.ea00cead.js.map": "/prayer-app/static/js/main.ea00cead.js.map",
+    "526.fb4f02d3.chunk.js.map": "/prayer-app/static/js/526.fb4f02d3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3510a02b.css",
+    "static/js/main.ea00cead.js"
+  ]
+}
