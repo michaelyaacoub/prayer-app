@@ -75,7 +75,7 @@ function Header({ showForm, setShowForm }) {
   return (
     <header className="header">
       <div className="logo">
-        <img src="logo.png" alt="this is share a prayer app logo!" />
+        <img src="./logo.png" alt="app logo!" />
         <h1>Prayer Requests</h1>
       </div>
       <button className="btn btn-large activate-btn"
@@ -253,9 +253,9 @@ function PrayerBox({ list, setLists }) {
             <p><span className="hashtag">#</span>{list.requestType}</p>
           </div>
           <p>
-          {isPriority ? <span className="priority">[❗️PRIORITY]</span> : null}
+            {isPriority ? <span className="priority-tag">[❗️PRIORITY]</span> : null}
             {list.message}
-            </p>
+          </p>
           <div className="vote-buttons">
             <button
               onClick={() => handleVotes("liked_prayer")}
@@ -287,8 +287,8 @@ function FooterMessage() {
   return (
     close ? (
       <div className="pop-up">
-        <button id="btn-msg" closebtn={close.toString()} onClick={HandleClose}>x</button>
-        <p>This app does not collect personl data or track any web activities!</p>
+        <button closebtn={close.toString()} onClick={HandleClose}>x</button>
+        <p>This app does not collect any personl data or track any web activities!</p>
       </div>) : null
   )
 
