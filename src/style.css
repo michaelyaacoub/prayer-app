@@ -65,12 +65,8 @@ section {
 }
 
 .logo img {
-<<<<<<< Updated upstream
-    width: 68px;
-=======
     width: 60px;
     height: 60px;
->>>>>>> Stashed changes
     border-radius: 50%;
 }
 
@@ -201,10 +197,6 @@ label {
     border-radius: 100px;
 }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 .priority-tag {
     font-size: 14px;
     font-weight: 600;
@@ -286,16 +278,9 @@ ul {
     flex-shrink: 0;
     gap: 10px;
     width: 100%;
-<<<<<<< Updated upstream
-    margin-bottom: 10px;
-    padding: 15px;
-    background-color: aliceblue;
-=======
-
     padding: 20px;
     margin-bottom: 10px;
     padding: 15px;
->>>>>>> Stashed changes
     color: #000;
     border-radius: 5px;
     transition: opacity 0.5s ease;
@@ -312,10 +297,6 @@ ul {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }
 
 .pop-up.fade-out {
