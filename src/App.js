@@ -208,8 +208,13 @@ function CategoryFilter({ setCurrentCategory }) {
 }
 
 function PrayerList({ lists, setLists }) {
+  let dbr = "";
   if (lists.length === 0)
-    return <p className="message-display">No requests under this category yet!</p>
+    dbr = <p>No requests under this category yet!</p>
+  else if (lists.length === 1)
+    dbr = <p>There is <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> request in the database...</p>
+  else
+    dbr = <p>There are total of <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> requests in the database...</p>
   return (
     <section>
       <ul className="request-list">
@@ -219,7 +224,7 @@ function PrayerList({ lists, setLists }) {
           "let's have a route: something like prayer.com/dbr"
       */}
       {/* <p>There are {dataRequests.length} Prayer requests and 5 Praise reports in the database.</p> */}
-      <p>There are {lists.length} requests in the database...</p>
+      <p>{dbr}</p>
     </section>
   )
 }
