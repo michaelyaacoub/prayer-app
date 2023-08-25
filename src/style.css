@@ -39,10 +39,7 @@ body {
 
 section {
     overflow: scroll;
-<<<<<<< HEAD
-=======
     scroll-behavior: smooth;
->>>>>>> 3d61e6d (build)
     padding-bottom: 40px;
 }
 
@@ -68,12 +65,8 @@ section {
 }
 
 .logo img {
-<<<<<<< HEAD
-    width: 68px;
-=======
     width: 60px;
     height: 60px;
->>>>>>> 3d61e6d (build)
     border-radius: 50%;
 }
 
@@ -204,11 +197,7 @@ label {
     border-radius: 100px;
 }
 
-<<<<<<< HEAD
-.priority {
-=======
 .priority-tag {
->>>>>>> 3d61e6d (build)
     font-size: 14px;
     font-weight: 600;
     margin-right: 10px;
@@ -289,27 +278,18 @@ ul {
     flex-shrink: 0;
     gap: 10px;
     width: 100%;
-<<<<<<< HEAD
-    margin-bottom: 50px;
-    padding: 20px;
-=======
+
     margin-bottom: 10px;
+    background-color: #eef7ff;
     padding: 15px;
->>>>>>> 3d61e6d (build)
-    background-color: aliceblue;
     color: #000;
     border-radius: 5px;
     transition: opacity 0.5s ease;
 }
 
 .pop-up button {
-<<<<<<< HEAD
-    width: 20px;
-    height: 20px;
-=======
     width: 25px;
     height: 25px;
->>>>>>> 3d61e6d (build)
     border-radius: 50%;
     border: 2px solid #000000;
     background-color: transparent;
@@ -318,10 +298,6 @@ ul {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d61e6d (build)
 }
 
 .pop-up.fade-out {
@@ -362,15 +338,9 @@ ul {
 }
 
 @media (max-width: 600px) {
-<<<<<<< HEAD
-    #root {
-        padding: 24px;
-    }
-=======
     /* #root {
         padding: 24px;
     } */
->>>>>>> 3d61e6d (build)
 
     .header {
         flex-direction: column;
@@ -384,13 +354,8 @@ ul {
     .box {
         padding: 12px 16px;
     }
-<<<<<<< HEAD
-}
-
-=======
 
     h1 {
         font-size: 20px;
     }
 }
->>>>>>> 3d61e6d (build)
