@@ -338,17 +338,18 @@ ul {
 }
 
 @media (max-width: 600px) {
-    /* #root {
-        padding: 24px;
-    } */
-
     .header {
         flex-direction: column;
         gap: 16px;
     }
 
     .fill-form {
-        padding: 16px;
+        border-radius: 20px;
+        background-color: #090807;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: grid;
+        gap: 10px;
     }
 
     .box {
@@ -357,5 +358,18 @@ ul {
 
     h1 {
         font-size: 20px;
+    }
+
+    .fill-form input,
+    .fill-form select,
+    .fill-form textarea {
+        outline: none;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        font-family: inherit;
+        font-size: 15px;
+        border-radius: 5px;
+        color: #292524;
     }
 }
