@@ -75,7 +75,7 @@ function Header({ showForm, setShowForm }) {
   return (
     <header className="header">
       <div className="logo">
-        <img src="./logo.png" alt="app logo!" />
+        <a href="/"><img src="./logo.png" alt="app logo!" /></a>
         <h1>Prayer Requests</h1>
       </div>
       <button className="btn btn-large activate-btn"

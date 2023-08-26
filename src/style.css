@@ -64,11 +64,14 @@ section {
     gap: 10px;
 }
 
-.logo img {
+.logo a, img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    text-decoration: none;
+    color: inherit;
 }
+
 
 h1 {
     font-size: 40px;
@@ -102,6 +105,7 @@ textarea {
     padding: 10px;
     font-family: inherit;
     font-size: 15px;
+    background-color: #E1E8ED;
     border-radius: 5px;
     color: #292524;
 }
@@ -285,10 +289,11 @@ ul {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 2px solid #000000;
+    border: 2px solid #14171A;
     background-color: transparent;
     display: flex;
     justify-content: center;
+    color: #14171A;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -360,7 +365,7 @@ ul {
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 25px;
         margin: 0;
     }
 
