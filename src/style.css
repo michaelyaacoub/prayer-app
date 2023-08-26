@@ -64,7 +64,8 @@ section {
     gap: 10px;
 }
 
-.logo a, img{
+.logo a,
+img {
     width: 60px;
     height: 60px;
     border-radius: 50%;

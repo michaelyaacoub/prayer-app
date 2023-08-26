@@ -75,7 +75,7 @@ function Header({ showForm, setShowForm }) {
   return (
     <header className="header">
       <div className="logo">
-        <a href="/"><img src="./logo.png" alt="app logo!" /></a>
+        <a href="https://michaelyaacoub.github.io/prayer-app/"><img src="./logo.png" alt="app logo!" /></a>
         <h1>Prayer Requests</h1>
       </div>
       <button className="btn btn-large activate-btn"
@@ -212,9 +212,9 @@ function PrayerList({ lists, setLists }) {
   if (lists.length === 0)
     dbr = <p>No requests under this category yet!</p>
   else if (lists.length === 1)
-    dbr = <p>There is <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> request in the database...</p>
+    dbr = <p>There is <span style={{ color: "#36e338", fontWeight: "600" }}>{lists.length}</span> request in the database...</p>
   else
-    dbr = <p>There are total of <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> requests in the database...</p>
+    dbr = <p>There are total of <span style={{ color: "#36e338", fontWeight: "600" }}>{lists.length}</span> requests in the database...</p>
   return (
     <section>
       <ul className="request-list">
