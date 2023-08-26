@@ -231,7 +231,7 @@ function PrayerList({ lists, setLists }) {
 
 function PrayerBox({ list, setLists }) {
   const [isUpdateing, setIsUpdating] = useState(false);
-  const isPriority = list.praying + list.hug < list.liked_prayer;
+  const isPriority = (list.praying + list.hug + 2) < list.liked_prayer;
   async function handleVotes(columnName) {
     setIsUpdating(true)
     const { data: updatedVote, error } = await supabase
