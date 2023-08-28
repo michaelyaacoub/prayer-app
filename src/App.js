@@ -1,12 +1,17 @@
-import { useState, useEffect } from "react";
-import Header from "./components/header";
-import PrayerRequestForm from "./components/requestForm";
-import PrayerList from "./components/prayerList";
-import CategoryFilter from "./components/categoryFilter";
-import HeaderPopUp from "./components/headerPopUp";
-import Loader from "./components/loader";
-import supabase from "./supabase";
-import './style.css';
+// In your component files
+import {
+  useState,
+  useEffect,
+  supabase,
+  Header,
+  DBR,
+  PrayerRequestForm,
+  PrayerList,
+  CategoryFilter,
+  HeaderPopUp,
+  Loader
+} from "./components/imports";
+
 
 
 function App() {
@@ -50,7 +55,7 @@ function App() {
         setCloseForm={setShowForm}
       /> : null
       }
-
+      <DBR/>
       <main className="main">
         <CategoryFilter setCurrentCategory={setCurrentCategory} />
         {isLoading ? <Loader /> : <PrayerList lists={lists} setLists={setLists} />}
