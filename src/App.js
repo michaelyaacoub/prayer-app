@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Header from "./components/header";
+import PrayerBox from "./components/prayerBox";
 import supabase from "./supabase";
 import './style.css';
 
@@ -69,20 +71,6 @@ function App() {
 
     </>
   );
-}
-
-function Header({ showForm, setShowForm }) {
-  return (
-    <header className="header">
-      <div className="logo">
-        <a href="https://michaelyaacoub.github.io/prayer-app/"><img src="./logo.png" alt="app logo!" /></a>
-        <h1>Prayer Requests</h1>
-      </div>
-      <button className="btn btn-large activate-btn"
-        onClick={() => setShowForm((show) => !show)}
-      >{showForm ? "Close" : "Share A Prayer"}</button>
-    </header>
-  )
 }
 
 function Loader() {
@@ -212,9 +200,9 @@ function PrayerList({ lists, setLists }) {
   if (lists.length === 0)
     dbr = <p>No requests under this category yet!</p>
   else if (lists.length === 1)
-    dbr = <p>There is <span style={{ color: "#36e338", fontWeight: "600" }}>{lists.length}</span> request in the database...</p>
+    dbr = <p>There is <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> request in the database...</p>
   else
-    dbr = <p>There are total of <span style={{ color: "#36e338", fontWeight: "600" }}>{lists.length}</span> requests in the database...</p>
+    dbr = <p>There are total of <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> requests in the database...</p>
   return (
     <section>
       <ul className="request-list">
@@ -229,59 +217,6 @@ function PrayerList({ lists, setLists }) {
   )
 }
 
-function PrayerBox({ list, setLists }) {
-  const [isUpdateing, setIsUpdating] = useState(false);
-  const isPriority = (list.praying + list.hug + 2) < list.liked_prayer;
-  async function handleVotes(columnName) {
-    setIsUpdating(true)
-    const { data: updatedVote, error } = await supabase
-      .from("prayer_request")
-      .update({ [columnName]: list[columnName] + 1 })
-      .eq("id", list.id)
-      .select()
-
-    console.log(updatedVote)
-    if (!error)
-      setLists((lists) => lists.map((l) => (l.id === list.id ?
-        updatedVote[0] : l))
-      )
-  }
-  return (
-    <ul>
-      <li className="list-requests">
-        <div className="box">
-          <div className="post-details">
-            <div style={{ fontFamily: "Sono" }}>
-              <p><span>From: </span>{list.userName}</p>
-              <p><span>Posted on: </span>{list.date}</p>
-            </div>
-            <p><span className="hashtag">#</span>{list.requestType}</p>
-          </div>
-          <p>
-            {isPriority ? <span className="priority-tag">[❗️PRIORITY]</span> : null}
-            {list.message}
-          </p>
-          <div className="vote-buttons">
-            <button
-              onClick={() => handleVotes("liked_prayer")}
-              disabled={isUpdateing}>👍 {list.liked_prayer}</button>
-            <button
-              onClick={() => handleVotes("praying")}
-              disabled={isUpdateing}
-            >🙏 {list.praying}</button>
-            <button
-              onClick={() => handleVotes("hug")}
-              disabled={isUpdateing}
-            >🤗 {list.hug}</button>
-          </div>
-          <div className="prayer-tags">
-            <li className="tag">{list.category}</li>
-          </div>
-        </div>
-      </li>
-    </ul>
-  )
-}
 
 function FooterMessage() {
   const [close, setClose] = useState(true);
