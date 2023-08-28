@@ -1,4 +1,3 @@
-import React from "react";
 import PrayerBox from "./prayerBox";
 
 function PrayerList({ lists, setLists }) {

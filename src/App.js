@@ -1,26 +1,14 @@
 import { useState, useEffect } from "react";
 import Header from "./components/header";
-import PrayerBox from "./components/prayerBox";
+import PrayerRequestForm from "./components/requestForm";
+import PrayerList from "./components/prayerList";
+import CategoryFilter from "./components/categoryFilter";
+import HeaderPopUp from "./components/headerPopUp";
+import Loader from "./components/loader";
 import supabase from "./supabase";
 import './style.css';
 
 
-const prayerFilter = [
-  { name: "Healing" },
-  { name: "Cancer" },
-  { name: "Provision" },
-  { name: "Human Trafficing" },
-  { name: "Peace" },
-  { name: "Wisdom" },
-  { name: "Courage" },
-  { name: "Spiritual Life" },
-  { name: "Marriage" },
-];
-
-const requestOptions = [
-  { request: "Prayer Request" },
-  { request: "Praise Report" }
-]
 function App() {
   useEffect(() => {
     // Scroll to the top of the page on component mount
@@ -55,7 +43,7 @@ function App() {
 
   return (
     <>
-      <FooterMessage />
+      <HeaderPopUp />
       <Header showForm={showForm} setShowForm={setShowForm} />
       {showForm ? <PrayerRequestForm
         setLists={setLists}
@@ -71,167 +59,6 @@ function App() {
 
     </>
   );
-}
-
-function Loader() {
-  return (
-    <p className="message-display">Loading...</p>
-  )
-}
-
-function PrayerRequestForm({ setLists, setCloseForm }) {
-  const [userName, setUserName] = useState("");
-  const [category, setCategory] = useState("");
-  const [message, setMessage] = useState("");
-  const [requestType, setRequestType] = useState("");
-
-  async function handleSubmit(e) {
-    // 1. prevent page from reload
-    e.preventDefault();
-    // 2. data is valid ? create a new prayer request : display err msg
-    if (userName && category && message && requestType) {
-      // 3. upload prayer requests to supabase
-      const { data: newPrayerRequest, error } = await supabase
-        .from("prayer_request")
-        .insert([{
-          userName,
-          requestType,
-          message,
-          category,
-          date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
-        }])
-        .select()
-        .order('date', { descending: true });
-      console.log(newPrayerRequest)
-      // 4. add new prayer object to UI: add prayer to state
-      if (!error)
-        setLists((lists) => [newPrayerRequest[0], ...lists])
-      // 5. reset input fields
-      setUserName("");
-      setCategory("");
-      setMessage("");
-      setRequestType("");
-
-      // 6. close form
-      setCloseForm(false);
-    }
-  }
-
-  return (
-    <form
-      className="fill-form"
-      onSubmit={handleSubmit}
-    >
-      <input
-        type="text"
-        name="user_name"
-        id="user_name"
-        placeholder="First name:"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-      <select
-        name="selection"
-        id="selection"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option>Choose prayer category</option>
-        {prayerFilter.map((filt) => (
-          <option
-            key={filt.name}
-            value={filt.name}
-          >
-            {filt.name.toUpperCase()}
-          </option>
-        ))}
-      </select>
-      <textarea
-        name="prayer"
-        rows="1"
-        cols="40"
-        placeholder="Type your prayer request"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      >
-      </textarea>
-      <select name="selection" id=""
-        value={requestType}
-        onChange={(e) => setRequestType(e.target.value)}
-      >
-        <option value="">Choose Prayer/Praise Catagory</option>
-        {requestOptions.map((req) => (
-          <option
-            key={req.request}
-            value={req.request}
-          >
-            {req.request}
-          </option>
-        ))}
-      </select>
-      <button id="submit-post" className="btn btn-large">Post Prayer</button>
-    </form>
-  );
-}
-
-function CategoryFilter({ setCurrentCategory }) {
-  return (
-    <aside>
-      <ul>
-        <li>
-          <button className="btn categories-btns" onClick={() => setCurrentCategory("all")}>All</button>
-        </li>
-        {prayerFilter.map((category) => (
-          <li key={category.name}>
-            <button className="btn categories-btns"
-              onClick={() => setCurrentCategory(category.name)}
-            >{
-                category.name}
-            </button>
-          </li>
-        )
-        )}
-      </ul>
-    </aside>);
-}
-
-function PrayerList({ lists, setLists }) {
-  let dbr = "";
-  if (lists.length === 0)
-    dbr = <p>No requests under this category yet!</p>
-  else if (lists.length === 1)
-    dbr = <p>There is <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> request in the database...</p>
-  else
-    dbr = <p>There are total of <span style={{color: "#36e338", fontWeight: "600"}}>{lists.length}</span> requests in the database...</p>
-  return (
-    <section>
-      <ul className="request-list">
-        {lists.map((list) => (<PrayerBox key={list.id} list={list} setLists={setLists} />))}
-      </ul>
-      {/* dbr --> databaseReport
-          "let's have a route: something like prayer.com/dbr"
-      */}
-      {/* <p>There are {dataRequests.length} Prayer requests and 5 Praise reports in the database.</p> */}
-      <p>{dbr}</p>
-    </section>
-  )
-}
-
-
-function FooterMessage() {
-  const [close, setClose] = useState(true);
-
-  const HandleClose = () => {
-    setClose(false)
-  }
-  return (
-    close ? (
-      <div className="pop-up">
-        <button closebtn={close.toString()} onClick={HandleClose}>x</button>
-        <p>This app does not collect any personl data or track any web activities!</p>
-      </div>) : null
-  )
-
 }
 
 export default App;

@@ -1,5 +1,3 @@
-import React from "react";
-
 function Header({ showForm, setShowForm }) {
     return (
       <header className="header">
