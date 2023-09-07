@@ -2,7 +2,7 @@ import { useState } from "react";
 import supabase from "../supabase";
 
 
-function PrayerBox({ list, setLists }) {
+function PrayerBox({ list, setList }) {
     const [isUpdateing, setIsUpdating] = useState(false);
     const isPriority = (list.praying + list.hug + 2) < list.liked_prayer;
     async function handleVotes(columnName) {
@@ -15,7 +15,7 @@ function PrayerBox({ list, setLists }) {
 
         console.log(updatedVote)
         if (!error)
-            setLists((lists) => lists.map((l) => (l.id === list.id ?
+            setList((lists) => lists.map((l) => (l.id === list.id ?
                 updatedVote[0] : l))
             )
     }

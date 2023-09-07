@@ -5,7 +5,7 @@ import supabase from "../supabase";
 import Header from "./header";
 import DBR from "./dbr";
 import PrayerRequestForm from "./requestForm";
-import PrayerList from "./prayerList";
+import { PrayerList, lists } from "./prayerList";
 import CategoryFilter from "./categoryFilter";
 import HeaderPopUp from "./headerPopUp";
 import Loader from "./loader";
@@ -20,6 +20,7 @@ export {
     DBR,
     PrayerRequestForm,
     PrayerList,
+    lists,
     CategoryFilter,
     HeaderPopUp,
     Loader
