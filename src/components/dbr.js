@@ -3,10 +3,10 @@ import React from "react";
 const DBR = ({ lists }) => {
   let dbr = "";
   if (lists.length === 0) {
-    dbr = <p>No requests under this category yet!</p>;
+    dbr = <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>No requests under this category yet!</p>;
   } else if (lists.length === 1) {
     dbr = (
-      <p>
+      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>
         There is{" "}
         <span style={{ color: "#36e338", fontWeight: "600" }}>
           {lists.length}
@@ -16,7 +16,7 @@ const DBR = ({ lists }) => {
     );
   } else {
     dbr = (
-      <p>
+      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>
         There are total of{" "}
         <span style={{ color: "#36e338", fontWeight: "600" }}>
           {lists.length}
