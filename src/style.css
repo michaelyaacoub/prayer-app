@@ -7,9 +7,9 @@
 }
 
 body {
-    /* #1c1a1a - #08050a */
-    background-color: #1059cf;
-    color: #E1E8ED;
+    /* #1c1a1a - #08050a - #1059cf */
+    background-color: #f7f7f7;
+    color: #eeeded;
     font-family: "Sono", sans-serif;
     padding: 20px 64px 0px;
 }
@@ -28,6 +28,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: #14171A;
 }
 
 .main {
@@ -87,7 +88,7 @@ h1 {
 /* FORM */
 .fill-form {
     border-radius: 20px;
-    background-color: #14171A;
+    background-color: #000000;
     padding: 16px 40px;
     margin-bottom: 40px;
     gap: 10px;
@@ -108,7 +109,7 @@ textarea {
     font-size: 15px;
     background-color: #E1E8ED;
     border-radius: 5px;
-    color: #292524;
+    color: #010000;
 }
 
 select {
@@ -143,7 +144,8 @@ label {
     /* #332a21 */
     font-size: 20px;
     line-height: 1.4;
-    background-color: #100f0e;
+    background-color: #ffffff;
+    color: #000000;
     margin-bottom: 16px;
     padding: 16px 24px;
     letter-spacing: -1px;
@@ -190,6 +192,7 @@ label {
     font-size: 14px;
     font-family: "Sono", sans-serif, Arial;
     background-color: #1059cf;
+    color: #fcfcfc;
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
@@ -214,7 +217,7 @@ label {
     padding: 16px 0 13px;
     font-family: "Sono" sans-serif;
     /* #2e324b - #1d1f2c*/
-    background-color: #100f0e;
+    background-color: #000000;
     transition: 0.3s;
     border-radius: 20px;
     cursor: pointer;
@@ -224,7 +227,7 @@ label {
     font-size: 20px;
     padding: 20px 30px 18px;
     background-color: #100f0e;
-    color: inherit;
+    color: #ffffff;
 }
 
 .categories-btns {
@@ -234,13 +237,14 @@ label {
 }
 
 button:hover {
-    background-color: #012f6c;
+    background-color: #1059cf;
     transition: 0.5s;
 }
 
 .vote-buttons {
     /* This will always set elements to the left */
     margin-left: auto;
+    color: #fcfcfc;
     flex-shrink: 0;
     display: flex;
     gap: 8px;
@@ -279,10 +283,10 @@ ul {
     width: 100%;
 
     margin-bottom: 10px;
-    background-color: #E1E8ED;
+    background-color: #000000;
     padding: 15px;
-    color: #14171A;
-    border-radius: 5px;
+    color: #ffffff;
+    border-radius: 10px;
     transition: opacity 0.5s ease;
 }
 
@@ -290,11 +294,11 @@ ul {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 2px solid #14171A;
+    border: 2px solid #ffffff;
     background-color: transparent;
     display: flex;
     justify-content: center;
-    color: #14171A;
+    color: #ffffff;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -341,7 +345,7 @@ ul {
     body {
         /* #1c1a1a - #08050a - 1DA1F2*/
         background-color: #1059cf;
-        color: #fafaf9;
+        color: #ffffff;
         font-family: "Sono", sans-serif;
         padding: 10px 15px 0px;
     }
@@ -354,7 +358,7 @@ ul {
 
     .fill-form {
         border-radius: 20px;
-        background-color: #14171A;
+        background-color: #000000;
         padding: 20px;
         margin-bottom: 20px;
         display: grid;
@@ -377,7 +381,7 @@ ul {
         flex-shrink: 0;
         align-self: self-start;
         justify-content: space-between;
-        color: #AAB8C2;
+        color: #ffffff;
         font-size: 16px;
         font-weight: 600;
     }
@@ -388,7 +392,7 @@ ul {
         width: 100%;
         padding: 10px;
         height: 50px;
-        background-color: #E1E8ED;
+        background-color: #ffffff;
     }
 
     .pop-up button {
