@@ -143,10 +143,10 @@ label {
 
 /* BODY */
 .box {
-    /* #332a21 */
+    /* #EDE7F6 */
     font-size: 20px;
     line-height: 1.4;
-    background-color: #ffffff;
+    background-color: #FAFAFA;
     color: #000000;
     margin-bottom: 16px;
     padding: 16px 24px;
@@ -167,7 +167,7 @@ label {
     flex-shrink: 0;
     align-self: self-start;
     justify-content: space-between;
-    color: #aaaaaa;
+    color: #676666;
     font-size: 15px;
     font-weight: 600;
 }
@@ -194,7 +194,7 @@ label {
     font-size: 14px;
     font-family: "Sono", sans-serif, Arial;
     background-color: #1059cf;
-    color: #fcfcfc;
+    color: #EDE7F6;
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
@@ -283,13 +283,16 @@ ul {
     flex-shrink: 0;
     gap: 10px;
     width: 100%;
-
     margin-bottom: 10px;
     background-color: #000000;
     padding: 15px;
     color: #ffffff;
     border-radius: 10px;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease; /* Smooth fade-out */
+}
+
+.pop-up.fade-out {
+    opacity: 0; /* Fades out smoothly */
 }
 
 .pop-up button {
@@ -306,9 +309,6 @@ ul {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.pop-up.fade-out {
-    opacity: 0;
-}
 
 @media (max-width: 1000px) {
     body {

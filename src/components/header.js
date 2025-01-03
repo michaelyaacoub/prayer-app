@@ -4,7 +4,7 @@ function Header({ showForm, setShowForm }) {
       <header className="header">
         <div className="logo">
           <a href="https://michaelyaacoub.github.io/prayer-app/"><img src={logo} alt="app logo!" /></a>
-          <h1>Prayer Requests</h1>
+          <h1>Pray For Me</h1>
         </div>
         <button className="btn btn-large activate-btn"
           onClick={() => setShowForm((show) => !show)}
