@@ -110,7 +110,7 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
                     </option>
                 ))}
             </select>
-            <button id="submit-post" className="btn btn-large">Post Prayer</button>
+            <button id="submit-post" className="btn btn-large">Post Your Prayer</button>
         </form>
     );
 }
