@@ -383,7 +383,7 @@ ul {
         flex-shrink: 0;
         align-self: self-start;
         justify-content: space-between;
-        color: #ffffff;
+        color: #676666;
         font-size: 16px;
         font-weight: 600;
     }
@@ -402,6 +402,7 @@ ul {
         height: 25px;
         padding: 10px;
         margin: 3px;
+        color: #000000;
     }
 
     .pop-up {
