@@ -3,25 +3,25 @@ import React from "react";
 const DBR = ({ lists }) => {
   let dbr = "";
   if (lists.length === 0) {
-    dbr = <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>No requests under this category yet!</p>;
+    dbr = <p style={{ color: "#14171A", fontWeight: "600", padding: "10px", fontSize: "15px" }}>No requests under this category yet!</p>;
   } else if (lists.length === 1) {
     dbr = (
-      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>
+      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px", fontSize: "15px" }}>
         There is{" "}
         <span style={{ color: "#36e338", fontWeight: "600" }}>
           {lists.length}
         </span>{" "}
-        request in the database...
+        request in the database..
       </p>
     );
   } else {
     dbr = (
-      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px" }}>
+      <p style={{ color: "#14171A", fontWeight: "600", padding: "10px", fontSize: "15px" }}>
         There are total of{" "}
-        <span style={{ color: "#36e338", fontWeight: "600" }}>
+        <span style={{ color: "#36e338", fontWeight: "600", fontSize: "15px" }}>
           {lists.length}
         </span>{" "}
-        requests in the database...
+        requests in the database..
       </p>
     );
   }
