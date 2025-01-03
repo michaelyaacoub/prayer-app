@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/prayer-app/static/css/main.9c38ea3d.css",
+    "main.css": "/prayer-app/static/css/main.b388bfa7.css",
     "main.js": "/prayer-app/static/js/main.ce6e2d16.js",
     "static/js/526.fb4f02d3.chunk.js": "/prayer-app/static/js/526.fb4f02d3.chunk.js",
     "static/media/logo.png": "/prayer-app/static/media/logo.9b8fb7c2d147d30fb277.png",
     "index.html": "/prayer-app/index.html",
-    "main.9c38ea3d.css.map": "/prayer-app/static/css/main.9c38ea3d.css.map",
+    "main.b388bfa7.css.map": "/prayer-app/static/css/main.b388bfa7.css.map",
     "main.ce6e2d16.js.map": "/prayer-app/static/js/main.ce6e2d16.js.map",
     "526.fb4f02d3.chunk.js.map": "/prayer-app/static/js/526.fb4f02d3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c38ea3d.css",
+    "static/css/main.b388bfa7.css",
     "static/js/main.ce6e2d16.js"
   ]
 }
