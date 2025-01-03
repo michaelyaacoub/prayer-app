@@ -4,11 +4,8 @@
     box-sizing: border-box;
     outline: none;
     scroll-behavior: smooth;
-    scrollbar-width: none; 
 }
-body::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Edge */
-}
+
 
 body {
     /* #1c1a1a - #08050a - #1059cf */
@@ -323,6 +320,8 @@ ul {
 @media (max-width: 1000px) {
     body {
         /* padding: 32px 48px; */
+        /* Disable scrolling outside of the list */
+        overflow: auto;
     }
 
     fill-form {
