@@ -29,7 +29,7 @@ function App() {
     async function getRequests() {
       setIsLoading(true);
 
-      let query = supabase.from("prayer_request").select('*');
+      let query = supabase.from("prayer-app-db").select('*');
       if (currentCategory !== "all")
         query = query.eq("category", currentCategory);
 

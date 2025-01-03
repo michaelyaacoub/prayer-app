@@ -33,13 +33,13 @@ function PrayerRequestForm({ setLists, setCloseForm }) {
         if (userName && category && message && requestType) {
             // 3. upload prayer requests to supabase
             const { data: newPrayerRequest, error } = await supabase
-                .from("prayer_request")
+                .from("prayer-app-db")
                 .insert([{
                     userName,
                     requestType,
                     message,
                     category,
-                    date: `${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`,
+                    date: new Date().toISOString().split("T")[0],
                 }])
                 .select()
                 .order('date', { descending: true });
