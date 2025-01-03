@@ -7,7 +7,7 @@ function HeaderPopUp() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setClose(false); // Close the pop-up after 5 seconds
-        }, 3000);
+        }, 5000);
 
         // Cleanup the timer when the component unmounts
         return () => clearTimeout(timer);
