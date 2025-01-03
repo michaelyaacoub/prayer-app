@@ -8,7 +8,8 @@
 
 body {
     /* #1c1a1a - #08050a - #1059cf */
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
+    background-color: #7C88F6;
     color: #eeeded;
     font-family: "Sono", sans-serif;
     padding: 20px 64px 0px;
@@ -55,6 +56,7 @@ section {
     text-transform: uppercase;
     font-family: "Sono", sans-serif, Arial;
     font-size: 25px;
+    color: #000000;
 }
 
 /* ELEMENTS */
